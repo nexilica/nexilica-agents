@@ -76,6 +76,41 @@ Agent specialized in Python 3.10+ development with focus on GUI applications and
 
 ---
 
+### 🔍 GitHub Extractor
+
+**File**: `github-extractor/agents/github-extractor.md`
+**Invocation**: `/github-extractor`
+
+**Description**:
+Expert GitHub data analyst specialized in extracting, analyzing, and presenting comprehensive insights from GitHub repositories, issues, pull requests, commits, releases, and related metadata.
+
+**Key Features**:
+- ✅ **Repository Analysis**: Search and analyze repositories by language, stars, topics, activity, and health indicators
+- ✅ **Issue Investigation**: Track issue status, labels, milestones, resolution patterns, and community feedback trends
+- ✅ **Pull Request Analysis**: Examine code review processes, merge patterns, collaboration, and PR velocity metrics
+- ✅ **Commit History**: Analyze commit patterns, contributor activity, development velocity, and specializations
+- ✅ **Release Tracking**: Monitor releases, version numbers, release notes, assets, and adoption patterns
+- ✅ **Content Retrieval**: Extract file contents including README, documentation, configuration, and source code
+- ✅ **Contributor Insights**: Identify top contributors, contribution frequency, expertise areas, and collaboration networks
+- ✅ **Comprehensive Reporting**: Structured output with insights, direct GitHub links, and actionable analysis
+
+**When to Use**:
+- Researching repositories before using or contributing
+- Analyzing project health and activity metrics
+- Monitoring issue resolution and PR workflows
+- Tracking contributor patterns and collaboration
+- Gathering release information and version history
+- Extracting repository documentation and files
+- Comparing multiple repositories or projects
+
+**Tools**: All GitHub MCP Server tools (search, read, list operations)
+**Model**: Sonnet
+**Color**: Blue
+
+**Full Documentation**: [github-extractor/agents/README.md](github-extractor/agents/README.md)
+
+---
+
 ## Repository Structure
 
 ```
@@ -116,4 +151,4 @@ nexilica-agents/
 ---
 
 **Last Update**: 2025-11-21
-**Number of Agents**: 1
+**Number of Agents**: 2

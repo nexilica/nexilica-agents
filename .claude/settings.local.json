@@ -3,7 +3,9 @@
     "allow": [
       "Bash(nul)",
       "Bash(if exist .cursorrules type .cursorrules)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ],
     "deny": [],
     "ask": []

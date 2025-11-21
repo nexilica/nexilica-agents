@@ -111,6 +111,49 @@ Expert GitHub data analyst specialized in extracting, analyzing, and presenting 
 
 ---
 
+### ✅ Context Validator
+
+**File**: `context-validator/agents/context-validator.md`
+**Invocation**: `/context-validator`
+
+**Description**:
+Expert documentation quality assurance specialist that validates markdown documentation against the canonical project context defined in CLAUDE.md. Ensures technical accuracy, guideline compliance, and consistency across all project documentation.
+
+**Key Features**:
+- ✅ **Technical Accuracy Verification**: Validates product specifications, sensor types, protocols, and hardware details
+- ✅ **Guideline Compliance**: Checks adherence to product description rules, naming conventions, and report standards
+- ✅ **Structured Validation Reports**: Generates comprehensive markdown reports with prioritized findings
+- ✅ **Three-Level Prioritization**: Classifies issues as Critical (must fix), Medium (should fix), or Low (nice to fix)
+- ✅ **Contextual Corrections**: Not only identifies errors but suggests correct alternatives with CLAUDE.md references
+- ✅ **ProKASRO Context Enforcement**: Ensures products are described in sewer rehabilitation robotics context, not generic applications
+- ✅ **Repository & Name Mapping**: Verifies correct GitHub repo references and contributor name mappings
+- ✅ **Batch Validation**: Can analyze multiple documents and generate consolidated reports
+
+**When to Use**:
+- After generating new reports or documentation
+- Before sharing documents with stakeholders
+- To verify existing documentation accuracy
+- When updating product specifications in docs
+- For periodic quality assurance reviews
+- To identify outdated or incorrect information
+- When suspecting inconsistencies with CLAUDE.md
+
+**Critical Validations**:
+- Incorrect technical specifications (e.g., sensor types, microcontrollers)
+- Generic business applications violating product description guidelines
+- Wrong repository names or GitHub URLs
+- Incorrect contributor name mappings
+- Missing ProKASRO-specific context
+- Speculation about non-authorized applications
+
+**Tools**: Read, Grep, Glob, WebFetch
+**Model**: Sonnet
+**Color**: Orange
+
+**Full Documentation**: [context-validator/agents/README.md](context-validator/agents/README.md)
+
+---
+
 ## Repository Structure
 
 ```
@@ -151,4 +194,4 @@ nexilica-agents/
 ---
 
 **Last Update**: 2025-11-21
-**Number of Agents**: 2
+**Number of Agents**: 3

@@ -10,8 +10,12 @@ This repository serves as a centralized collection of Claude AI agents for Nexil
 
 ### Core System File
 
-**system.md**: Defines the meta-agent identity - an AI assistant specialized in creating AI agents for Claude. This file contains:
+**meta-agent.md**: Defines the meta-agent identity - an AI assistant specialized in creating AI agents for Claude. This file contains:
 - The methodology for transforming user prompts into comprehensive agent descriptions
+- **Agent Architecture Patterns**: When to create monolithic, atomic, or orchestrator agents
+- **Project Context Integration**: How agents should read/write to project-context/
+- **Templates**: Structured templates for atomic agents and orchestrators
+- **References**: Examples from existing agents (SW/, HW/, FW/, Repo/)
 - Output format requirements for Claude CLI agent generation workflow
 - Integration with Claude's `/agents` → "generate with claude (recommended)" feature
 
@@ -101,7 +105,7 @@ The SW/ category implements an atomic, orchestrated workflow for Python developm
 
 When asked to create a new agent:
 
-1. **Read `system.md`** to understand the agent creation methodology
+1. **Read `meta-agent.md`** to understand the agent creation methodology and architectural patterns
 2. **Determine functional category**: SW, HW, FW, Repo, or General purpose
 3. **Follow established pattern** from existing agents in the same category
 4. **Create directory structure**: `{category}/{agent-name}/agents/`

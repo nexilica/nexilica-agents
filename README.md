@@ -438,7 +438,7 @@ Expert documentation quality assurance specialist that validates markdown docume
 nexilica-agents/
 ├── README.md                    # This file
 ├── CLAUDE.md                    # Guide for Claude Code
-├── system.md                    # Meta-agent for creating new agents
+├── meta-agent.md                # Meta-agent for creating new agents (with atomic patterns)
 ├── FW/                          # Firmware development agents
 │   └── stm32-firmware-analyzer/
 ├── HW/                          # Hardware design and analysis agents

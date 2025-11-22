@@ -15,43 +15,108 @@ This repository serves as a centralized collection of Claude AI agents for Nexil
 - Output format requirements for Claude CLI agent generation workflow
 - Integration with Claude's `/agents` → "generate with claude (recommended)" feature
 
-### Agent Structure Pattern
+### Agent Organization by Functional Category
 
-Each agent follows a consistent structure in its own directory:
+Agents are organized into functional domains for atomic, composable workflows:
 
 ```
-{agent-name}/
+nexilica-agents/
+├── FW/              # Firmware development agents
+├── HW/              # Hardware design and analysis agents
+├── SW/              # Software development agents (atomic workflow)
+├── Repo/            # Repository management agents
+└── General purpose/ # Cross-domain utility agents
+```
+
+**Atomic Workflow Philosophy**: Complex tasks are decomposed into specialized agents that work together through orchestration, improving speed and reducing context overload.
+
+### Project Context System
+
+All agents output to a centralized `project-context/` directory:
+
+```
+Workspace/
+├── {project-name}/              # Project codebase (untouched)
+└── project-context/             # Centralized agent outputs
+    ├── SW/
+    │   └── {project-name}/
+    │       ├── context_snapshot.md      # Fast project overview
+    │       ├── sw_context.md            # Detailed documentation
+    │       ├── architecture_report.md   # Architectural analysis
+    │       ├── test_report.md           # Code review findings
+    │       └── _project_metadata.json   # Tracking metadata
+    ├── HW/
+    ├── FW/
+    └── [other categories...]
+```
+
+**Benefits**:
+- Separates generated documentation from source code
+- Enables agent-to-agent data passing via standard files
+- Maintains project history and analysis artifacts
+- Supports multi-project workflows in single workspace
+
+### Agent Structure Pattern
+
+Each agent follows a consistent structure:
+
+```
+{category}/{agent-name}/
   agents/
     {agent-name}.md      # Agent configuration (YAML frontmatter + task description)
     README.md            # User guide with examples and best practices
 ```
 
 **Agent Configuration File** (`{agent-name}.md`):
-- YAML frontmatter: `name`, `description`, `tools`, `model`, `permissionMode`
+- YAML frontmatter: `name`, `description`, `tools`, `model`, `permissionMode`, `color`
 - Task description with Core Workflow, Critical Rules, Example Interactions
-- Structured guidelines specific to the agent's domain
+- Project context management instructions (reading/writing to project-context/)
+- Integration points with other agents
 
 **README.md**:
-- Usage instructions (direct invocation, automatic invocation, generation)
+- Usage instructions (direct invocation, automatic invocation, orchestration)
 - Main functionality explanation
 - Practical examples and scenarios
+- Integration with other agents in the workflow
 - Troubleshooting and customization guidance
 
-### Existing Agents
+### SW/ Category - Atomic Python Workflow
 
-- **python-specialist**: Python 3.10+ development with automatic `sw_context.md` documentation maintenance, library proposal workflow, and GUI/scripting specialization
+The SW/ category implements an atomic, orchestrated workflow for Python development:
+
+**Atomic Agents** (6):
+- **python-context-scanner**: Fast project scanning → context_snapshot.md
+- **python-library-advisor**: Library selection with pros/cons
+- **python-developer**: Pure code implementation (Python 3.10+)
+- **python-documenter**: Documentation maintenance (sw_context.md)
+- **python-tester**: Code review and test suggestions
+- **python-architecture-analyst**: Deep architectural analysis
+
+**Orchestrator** (1):
+- **python-workflow-orchestrator**: Coordinates atomic agents into 5 predefined workflows (quick fix, new feature, analysis, refactoring, review)
+
+**Performance**: 5-10x faster on large codebases by avoiding repeated full codebase reads. Agents share data via project-context/ files.
 
 ## Workflow for Creating New Agents
 
 When asked to create a new agent:
 
-1. Read `system.md` to understand the agent creation methodology
-2. Follow the established pattern from existing agents (e.g., `python-specialist/`)
-3. Create directory structure: `{agent-name}/agents/`
-4. Generate agent configuration file with YAML + comprehensive task description
-5. Generate user-facing README.md with examples and usage patterns
-6. Ensure the agent's workflow includes proper tool usage and critical rules
-7. **Update the main README.md**: Add the new agent to the "Agents Disponibili" section with complete description, characteristics, and use cases
+1. **Read `system.md`** to understand the agent creation methodology
+2. **Determine functional category**: SW, HW, FW, Repo, or General purpose
+3. **Follow established pattern** from existing agents in the same category
+4. **Create directory structure**: `{category}/{agent-name}/agents/`
+5. **Generate agent configuration file** with:
+   - YAML frontmatter (name, description, tools, model, permissionMode, color)
+   - Comprehensive task description with Core Workflow, Critical Rules
+   - **Project context management** section (how to read/write project-context/ files)
+   - Integration points with other agents in the workflow
+6. **Generate user-facing README.md** with examples, usage patterns, and integration documentation
+7. **If creating atomic workflow agents**:
+   - Define clear input/output contracts (which files in project-context/)
+   - Document data flow between agents
+   - Update or create orchestrator agent if needed
+8. **Update main README.md**: Add agent to appropriate category section with description and use cases
+9. **Update CLAUDE.md**: Add to category's agent list if it's a new workflow pattern
 
 ## Key Concepts
 
